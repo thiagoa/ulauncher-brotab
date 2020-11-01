@@ -44,7 +44,7 @@ class BrotabExtension(Extension):
         """ Index brotab tabs """
         self.brotab_client.index()
 
-        Timer(INDEX_REFRESH_TIME_SECONDS, self.index_tabs).start()
+        # Timer(INDEX_REFRESH_TIME_SECONDS, self.index_tabs).start()
 
     def show_commands(self, arg):
         """ Show Extension commands """
@@ -73,6 +73,7 @@ class BrotabExtension(Extension):
     def search_tabs(self, event):
         """ Search tabs """
         items = []
+        self.brotab_client.index()
         tabs = self.brotab_client.search_tabs(event.get_argument())
 
         for tab in tabs[:DISPLAY_MAX_RESULTS]:
